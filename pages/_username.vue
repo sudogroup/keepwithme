@@ -1,6 +1,6 @@
 <template>
-  <div class="text-center mt-10">
-    <section id="soical">
+  <div class="container mx-auto text-white">
+    <section id="soical" class="bg-red">
       1
     </section>
     <section id="health">
