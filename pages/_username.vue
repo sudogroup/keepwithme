@@ -1,8 +1,6 @@
 <template>
   <div class="container mx-auto text-white">
-    <section id="soical" class="bg-red">
-      1
-    </section>
+    <Card title="Last 3 places" :data="checkins" />
     <section id="health">
       2
     </section>
@@ -14,7 +12,14 @@
 
 <script>
 export default {
-    
+    data() {
+      return {
+        checkins: null
+      }
+    },
+    async mounted() {
+      this.checkins = await this.$sleepyApi.getCheckins()
+    }
 }
 </script>
 
