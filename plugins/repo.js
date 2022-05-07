@@ -1,7 +1,10 @@
-import createRepository from '~/helpers/foursquare'
+import foursquareAPI from '~/helpers/foursquare'
+import githubAPI from '~/helpers/github'
 export default (ctx, inject) => {
   // inject the repository in the context (ctx.app.$repository)
   // And in the Vue instances (this.$repository in your components)
-  const repositoryWithAxios = createRepository(ctx.$axios)
-  inject('sleepyApi', repositoryWithAxios())
+  const foursquareAxios = foursquareAPI(ctx.$axios)
+  const githubAxios = githubAPI(ctx.$axios)
+  inject('sleepyApi', foursquareAxios())
+  inject('githubApi', githubAxios())
 }

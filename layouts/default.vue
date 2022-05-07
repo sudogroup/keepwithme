@@ -9,7 +9,7 @@
         </client-only>
       </div>
       <div class="pic flex justify-center mb-5" style="margin-top: -100px;z-index: 1">
-        <img src="https://avatars.githubusercontent.com/u/9112378?v=4" style="height:200px" class="rounded-full">
+        <img ref="avatar" :src="this.$store.state.avatar" style="height:200px" class="rounded-full">
       </div>
     </header>
 
