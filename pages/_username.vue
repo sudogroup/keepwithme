@@ -1,9 +1,13 @@
 <template>
   <div class="container mx-auto text-white">
+
+
     <Card title="Last 3 places" :data="checkins" />
+
     <Card title="Last 3 tweeits">
-<a class="twitter-timeline" data-height="200" data-width="100%" data-dnt="true" data-theme="dark" href="https://twitter.com/alonemazin?ref_src=twsrc%5Etfw">Tweets by alonemazin</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <a class="twitter-timeline" data-height="200" data-width="100%" data-dnt="true" data-theme="dark" href="https://twitter.com/alonemazin?ref_src=twsrc%5Etfw">Tweets by alonemazin</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </Card>
+
     <Card title="Github page">
       <p>{{github.repos}}</p>
     </Card>
@@ -23,16 +27,7 @@ export default {
   async mounted() {
     this.checkins = await this.$sleepyApi.getCheckins();
     this.github = await this.$githubApi.getGithub();
-    console.log(this.github)
-    console.log(this.$store.state.avatar)
     this.$store.commit('changeAvatar', this.github.avatar)
-    console.log(this.$store.state.avatar)
   },
 };
 </script>
-
-<style>
-#twitter-widget-0 .SandboxRoot .timeline-Header {
-  display: none;
-}
-</style>
