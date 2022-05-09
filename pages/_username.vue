@@ -11,7 +11,7 @@
       <Label>last visited places</Label>
       <Widget>
         <ul class="flex flex-col gap-2">
-          <li v-for="place in checkins">
+          <li v-for="(place, key) in checkins" :key="key">
             <span>{{ place.venue.name }}</span>
           </li>
         </ul>
@@ -22,7 +22,7 @@
       <Label>github repositories</Label>
       <Widget>
         <ul class="flex flex-col gap-3">
-          <li v-for="repository in github.repositories">
+          <li v-for="(repository, key) in github.repositories" :key="key">
             <a :href="repository.html_url" target="_blank"
               ><span>{{ repository.name }}</span></a
             >
@@ -47,8 +47,8 @@ export default {
     };
   },
   async mounted() {
-    this.checkins = await this.$sleepyApi.getCheckins();
-    this.github = await this.$githubApi.getGithub("alonemazin");
+    this.checkins = await this.$api.getCheckins();
+    this.github = await this.$api.getGithub("alonemazin");
     this.$store.commit("changeAvatar", this.github.profile.avatar_url);
   },
 };

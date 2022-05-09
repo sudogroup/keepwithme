@@ -1,9 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body  {
     background-color: rgb(9 9 9);
 }
 
 section {
-    margin-bottom: 1rem;
+    @apply mb-4;
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
 
@@ -13,24 +17,22 @@ section .cardHead, section .cardContent {
 }
 
 section .cardHead {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
+    @apply rounded-t-lg;
     background-color: #222222;
 }
 
 section .cardContent {
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
+    @apply rounded-b-lg;
 }
 
 .pic {
-    margin-top: -100px;
+    margin-top: -130px;
     z-index: 1
 }
 
 .pic img {
-    width: 200px;
-    height: auto;
+    @apply w-52;
+    @apply h-auto;
     border: solid 5px rgba(255, 255, 255, 0.09);
 }
 
@@ -42,8 +44,26 @@ section .cardContent {
 
 footer {
     background-color: #121212;
-    width: 100%;
-    height: auto;
+    @apply w-full;
+    @apply w-auto;
     border-top: solid 1px rgba(255, 255, 255, 0.09);
 }
 
+
+::-webkit-scrollbar {
+    @apply w-2.5;
+    @apply h-2.5;
+}
+
+::-webkit-scrollbar-track {
+    background: #0e0e0e; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(61, 61, 61); 
+    @apply rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(81, 81, 81); 
+}
