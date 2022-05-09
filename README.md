@@ -10,11 +10,11 @@ _we use docker to run the app, to run the app in development_
 docker-compose up # this should run docker container with hot reloading enabled
 ```
 
-_this will run docker with volume mounted to your development dir, every change will appear in the browser no need to re-build evertime_
+_this will run docker with volume mounted to your development dir, every change will appear in the browser no need to re-build everytime_
 
 ## shipping or deployment
 
-_shipping the docker container as a producation app_
+_shipping the docker container as a production app_
 
 ```bash
 # build docker image
