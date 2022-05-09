@@ -1,25 +1,31 @@
-# keepwithme
+# Keep with me
 
-## Build Setup
+_keep with me is an app to share your data with the world & track your data in a single page_
+
+## **development**
+
+_we use docker to run the app, to run the app in development_
 
 ```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+docker-compose up # this should run docker container with hot reloading enabled
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+_this will run docker with volume mounted to your development dir, every change will appear in the browser no need to re-build evertime_
 
-## Special Directories
+## shipping or deployment
+
+_shipping the docker container as a producation app_
+
+```bash
+# build docker image
+docker build -t keep-with-me .
+# run the container
+docker run -it -p 5050:5050 keep-with-me
+```
+
+---
+
+## special directions
 
 You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
 
@@ -40,7 +46,6 @@ More information about the usage of this directory in [the documentation](https:
 Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
 
 ### `pages`
 
