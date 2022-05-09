@@ -1,0 +1,12 @@
+version: "3"
+services:
+  nuxt:
+    build: .
+    working_dir: /usr/src/nuxt-app/
+    volumes:
+      - ./:/usr/src/nuxt-app/
+    ports:
+      - 5050:5050
+    command: ["npm", "run", "dev"]
+    environment:
+      - CHOKIDAR_USEPOLLING=true
