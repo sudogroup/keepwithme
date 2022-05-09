@@ -1,13 +1,14 @@
-export default $axios => () => ({
-    async getGithub() {
-         const USERNAME = "alonemazin"
-         const URL = `https://api.github.com/users/${USERNAME}`
-         const githubResponse = await $axios.$get(URL)
-         const avatar = githubResponse.avatar_url
-         const repos = githubResponse.public_repos
-         return {
-             avatar: avatar,
-             repos: repos
-         }
-     }
- })
+export default ($axios) => () => ({
+  async getGithub(username) {
+    const URL = `https://api.github.com/users/${username}`;
+
+    const profile = await $axios.$get(URL);
+
+    const repositories = await $axios.$get(profile.repos_url);
+
+    return {
+      profile,
+      repositories,
+    };
+  },
+});
