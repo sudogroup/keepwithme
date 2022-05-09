@@ -1,23 +1,45 @@
 <template>
-  <div class="container mx-auto text-white">
+  <div
+    class="container mx-auto text-white flex flex-col justify-center items-center gap-4"
+  >
+    <Container>
+      <Label>hello</Label>
+      <Widget> hello, world </Widget>
+    </Container>
 
+    <Container>
+      <Label>last visited places</Label>
+      <Widget>
+        <ul class="flex flex-col gap-2">
+          <li v-for="place in checkins">
+            <span>{{ place.venue.name }}</span>
+          </li>
+        </ul>
+      </Widget>
+    </Container>
 
-    <Card title="Last 3 places" :data="checkins" />
-
-    <Card title="Last 3 tweeits">
-      <a class="twitter-timeline" data-height="200" data-width="100%" data-dnt="true" data-theme="dark" href="https://twitter.com/alonemazin?ref_src=twsrc%5Etfw">Tweets by alonemazin</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </Card>
-
-    <Card title="Github page">
-      <p>{{github.repos}}</p>
-    </Card>
+    <Container>
+      <Label>github repositories</Label>
+      <Widget>
+        <ul class="flex flex-col gap-3">
+          <li v-for="repository in github.repositories">
+            <a :href="repository.html_url" target="_blank"
+              ><span>{{ repository.name }}</span></a
+            >
+          </li>
+        </ul>
+      </Widget>
+    </Container>
   </div>
 </template>
 
 <script>
-import card from '../components/card.vue';
+import card from "../components/card.vue";
+import Widget from "../components/Widget/index.vue";
+import Container from "~/components/Widget/Container.vue";
+import Label from "~/components/Widget/Label.vue";
 export default {
-  components: { card },
+  components: { card, Widget, Container, Label },
   data() {
     return {
       checkins: null,
@@ -26,8 +48,8 @@ export default {
   },
   async mounted() {
     this.checkins = await this.$sleepyApi.getCheckins();
-    this.github = await this.$githubApi.getGithub();
-    this.$store.commit('changeAvatar', this.github.avatar)
+    this.github = await this.$githubApi.getGithub("alonemazin");
+    this.$store.commit("changeAvatar", this.github.profile.avatar_url);
   },
 };
 </script>
